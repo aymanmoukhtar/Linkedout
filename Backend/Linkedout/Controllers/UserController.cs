@@ -1,8 +1,8 @@
 ﻿using Linkedout.Application.User.Commands.CreateUser;
 using Linkedout.Application.User.Queries.Login;
-using Linkedout.Application.User.ViewModels;
 using Linkedout.Domain.Users.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -24,6 +24,14 @@ namespace Linkedout.Presentation.Api.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
+        [Route("users")]
+        [Authorize]
+        public async Task<GetAllUsersOutput> GetAll()
+        {
+            return await _mediator.Value.Send(new GetAllUsersQuery());
+        }
+
         [HttpPost]
         [Route("Register")]
         public async Task<User> Register(CreateUserCommand input)
@@ -33,7 +41,7 @@ namespace Linkedout.Presentation.Api.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<LoginOutputViewModel> Login(string username, string password)
+        public async Task<LoginCommandOutput> Login(string username, string password)
         {
             return await _mediator.Value.Send(new LoginCommand { Username = username, Password = password });
         }
