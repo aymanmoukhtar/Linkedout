@@ -1,4 +1,4 @@
-﻿namespace Linkedout.Infrastructure.Services.Identity
+﻿namespace Linkedout.Domain.ViewModels.User
 {
     public class UserTokenViewModel
     {

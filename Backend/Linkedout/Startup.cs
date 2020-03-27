@@ -1,3 +1,4 @@
+using Linkedout.Application;
 using Linkedout.Crosscutting;
 using Linkedout.Crosscutting.Constants;
 using Linkedout.Infrastructure;
@@ -22,6 +23,7 @@ namespace Linkedout
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AppSettings>(Configuration.GetSection(AppConstant.APP_SETTINGS_KEY));
+            services.AddApplicationDependencies();
             services.AddInfrastructureDependencies(Configuration);
             services.AddCrosscuttingDependencies(Configuration);
             services.AddControllers();

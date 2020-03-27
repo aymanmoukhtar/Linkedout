@@ -1,7 +1,8 @@
 ﻿using Linkedout.Domain.Users.Entities;
+using Linkedout.Domain.ViewModels.User;
 using System.Threading.Tasks;
 
-namespace Linkedout.Infrastructure.Services.Identity
+namespace Linkedout.Domain.Interfaces.Services.Identity
 {
     public interface IIdentityService
     {

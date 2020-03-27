@@ -1,5 +1,7 @@
 ﻿using Linkedout.Crosscutting;
+using Linkedout.Domain.Interfaces.Services.Identity;
 using Linkedout.Domain.Users.Entities;
+using Linkedout.Domain.ViewModels.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

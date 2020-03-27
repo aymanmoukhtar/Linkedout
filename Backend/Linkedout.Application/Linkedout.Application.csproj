@@ -7,12 +7,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Linkedout.Crosscutting\Linkedout.Crosscutting.csproj" />
     <ProjectReference Include="..\Linkedout.Domain\Linkedout.Domain.csproj" />
-    <ProjectReference Include="..\Linkedout.Infrastructure\Linkedout.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="User\Queries\" />
-    <Folder Include="User\Commands\" />
   </ItemGroup>
 
 </Project>

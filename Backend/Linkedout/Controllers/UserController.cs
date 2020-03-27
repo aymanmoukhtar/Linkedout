@@ -1,5 +1,8 @@
-﻿using Linkedout.Domain.Users.Entities;
-using Linkedout.Infrastructure.Services.Identity;
+﻿using Linkedout.Application.User.Commands.CreateUser;
+using Linkedout.Application.User.Queries.Login;
+using Linkedout.Application.User.ViewModels;
+using Linkedout.Domain.Users.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -12,29 +15,27 @@ namespace Linkedout.Presentation.Api.Controllers
     // https://www.youtube.com/watch?v=MGCC2zTb0t4
     public class UserController : ControllerBase
     {
-        private readonly Lazy<IIdentityService> _identityService;
+        private readonly Lazy<IMediator> _mediator;
 
         public UserController(
-            Lazy<IIdentityService> identityService
+            Lazy<IMediator> mediator
             )
         {
-            _identityService = identityService;
+            _mediator = mediator;
         }
 
         [HttpPost]
         [Route("Register")]
-        //POST : user/Register
-        public async Task<User> Register(CreateUserInput input)
+        public async Task<User> Register(CreateUserCommand input)
         {
-            return await _identityService.Value.CreateAsync(input);
+            return await _mediator.Value.Send(input);
         }
 
         [HttpPost]
         [Route("Login")]
-        //POST : /api/ApplicationUser/Login
-        public async Task<UserTokenViewModel> Login(string username, string password)
+        public async Task<LoginOutputViewModel> Login(string username, string password)
         {
-            return await _identityService.Value.LoginAsync(new UserLoginInput { Password = password, Username = username });
+            return await _mediator.Value.Send(new LoginCommand { Username = username, Password = password });
         }
     }
 }
