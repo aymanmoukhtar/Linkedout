@@ -1,10 +1,12 @@
 ﻿using Linkedout.Application.User.Commands.CreateUser;
-using Linkedout.Application.User.Queries.Login;
+using Linkedout.Application.User.Commands.Login;
+using Linkedout.Application.User.Queries.GetAllUsersQuery;
 using Linkedout.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Linkedout.Presentation.Api.Controllers
@@ -27,7 +29,7 @@ namespace Linkedout.Presentation.Api.Controllers
         [HttpGet]
         [Route("users")]
         [Authorize]
-        public async Task<GetAllUsersOutput> GetAll()
+        public async Task<List<GetAllUsersOutput>> GetAll()
         {
             return await _mediator.Value.Send(new GetAllUsersQuery());
         }

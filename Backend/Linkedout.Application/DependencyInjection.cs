@@ -1,4 +1,4 @@
-﻿using Linkedout.Application.User.Queries.Login;
+﻿using Linkedout.Application.User.Commands.Login;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

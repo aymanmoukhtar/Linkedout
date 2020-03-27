@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Linkedout.Application.User.Queries.Login
+namespace Linkedout.Application.User.Commands.Login
 {
     public class LoginCommandOutput
     {

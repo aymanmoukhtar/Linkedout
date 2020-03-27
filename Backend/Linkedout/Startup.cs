@@ -1,7 +1,13 @@
+using GraphiQl;
+using HotChocolate;
+using HotChocolate.AspNetCore;
 using Linkedout.Application;
 using Linkedout.Crosscutting;
 using Linkedout.Crosscutting.Constants;
 using Linkedout.Infrastructure;
+using Linkedout.Presentation.Api.GraphQL;
+using Linkedout.Presentation.Api.GraphQL.Mutations;
+using Linkedout.Presentation.Api.GraphQL.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +32,20 @@ namespace Linkedout
             services.AddApplicationDependencies();
             services.AddInfrastructureDependencies(Configuration);
             services.AddCrosscuttingDependencies(Configuration);
+            services.AddScoped<UserQueries>();
+            services.AddScoped<UserMutations>();
+
             services.AddControllers();
+
+            services.AddGraphQL(sp =>
+                SchemaBuilder.New()
+                .AddServices(sp)
+                .AddQueryType<Query>()
+                .AddType<UserQueries>()
+                .AddMutationType<Mutation>()
+                .AddType<UserMutations>()
+                .Create()
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +64,15 @@ namespace Linkedout
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(b =>
+            {
+                b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            })
+                .UseWebSockets()
+                .UseRouting()
+                .UseGraphQL("/graphql")
+                .UseGraphiQl("/graphiql");
         }
     }
 }

@@ -1,36 +1,31 @@
 ﻿using Linkedout.Domain.Interfaces.Repository;
 using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Linkedout.Application.User.Queries.Login
+namespace Linkedout.Application.User.Queries.GetAllUsersQuery
 {
     using Linkedout.Domain.Users.Entities;
     using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
     using System.Linq;
-    using static Linkedout.Application.User.Queries.Login.GetAllUsersOutput;
 
     #region Output
     public class GetAllUsersOutput
     {
-        public List<GetAllUsersUserViewModel> Users { get; set; }
-        public class GetAllUsersUserViewModel
-        {
-            public string Id { get; set; }
-            public string FirstName { get; set; }
-        }
+        public string Id { get; set; }
+        public string FirstName { get; set; }
     }
     #endregion
 
     #region Query
-    public class GetAllUsersQuery : IRequest<GetAllUsersOutput>
+    public class GetAllUsersQuery : IRequest<List<GetAllUsersOutput>>
     {
     }
     #endregion
 
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, GetAllUsersOutput>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<GetAllUsersOutput>>
     {
 
         private readonly Lazy<IReadonlyRepository<User>> _userReadonlyRepository;
@@ -42,19 +37,16 @@ namespace Linkedout.Application.User.Queries.Login
             _userReadonlyRepository = userReadonlyRepository;
         }
 
-        public async Task<GetAllUsersOutput> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAllUsersOutput>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            return new GetAllUsersOutput
-            {
-                Users = await _userReadonlyRepository.Value
+            return await _userReadonlyRepository.Value
                 .GetAll()
-                .Select(_ => new GetAllUsersUserViewModel
+                .Select(_ => new GetAllUsersOutput
                 {
                     Id = _.Id,
                     FirstName = _.FirstName
                 })
-                .ToListAsync()
-            };
+                .ToListAsync();
         }
     }
 }
