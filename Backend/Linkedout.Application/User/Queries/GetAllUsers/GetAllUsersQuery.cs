@@ -11,21 +11,13 @@ namespace Linkedout.Application.User.Queries.GetAllUsersQuery
     using System.Collections.Generic;
     using System.Linq;
 
-    #region Output
-    public class GetAllUsersOutput
-    {
-        public string Id { get; set; }
-        public string FirstName { get; set; }
-    }
-    #endregion
-
     #region Query
-    public class GetAllUsersQuery : IRequest<List<GetAllUsersOutput>>
+    public class GetAllUsersQuery : IRequest<List<UserViewModel>>
     {
     }
     #endregion
 
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<GetAllUsersOutput>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserViewModel>>
     {
 
         private readonly Lazy<IReadonlyRepository<User>> _userReadonlyRepository;
@@ -37,14 +29,15 @@ namespace Linkedout.Application.User.Queries.GetAllUsersQuery
             _userReadonlyRepository = userReadonlyRepository;
         }
 
-        public async Task<List<GetAllUsersOutput>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserViewModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             return await _userReadonlyRepository.Value
                 .GetAll()
-                .Select(_ => new GetAllUsersOutput
+                .Select(_ => new UserViewModel
                 {
                     Id = _.Id,
-                    FirstName = _.FirstName
+                    FirstName = _.FirstName,
+                    NormalizedId = _.Id
                 })
                 .ToListAsync();
         }

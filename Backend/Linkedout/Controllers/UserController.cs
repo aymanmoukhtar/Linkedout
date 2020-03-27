@@ -1,4 +1,5 @@
-﻿using Linkedout.Application.User.Commands.CreateUser;
+﻿using Linkedout.Application.User;
+using Linkedout.Application.User.Commands.CreateUser;
 using Linkedout.Application.User.Commands.Login;
 using Linkedout.Application.User.Queries.GetAllUsersQuery;
 using Linkedout.Domain.Users.Entities;
@@ -29,7 +30,7 @@ namespace Linkedout.Presentation.Api.Controllers
         [HttpGet]
         [Route("users")]
         [Authorize]
-        public async Task<List<GetAllUsersOutput>> GetAll()
+        public async Task<List<UserViewModel>> GetAll()
         {
             return await _mediator.Value.Send(new GetAllUsersQuery());
         }
