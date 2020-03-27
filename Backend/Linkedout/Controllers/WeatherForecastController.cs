@@ -1,5 +1,6 @@
 ﻿using Linkedout.Domain.Interfaces.Repository;
 using Linkedout.Domain.Users.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Linq;
 namespace Linkedout.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {

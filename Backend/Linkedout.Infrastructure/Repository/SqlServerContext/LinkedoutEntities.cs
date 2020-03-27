@@ -1,26 +1,28 @@
 ﻿using Linkedout.Domain.Users.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Linkedout.Infrastructure.Repository.SqlServerContext
 {
-    public class LinkedoutEntities : DbContext, IDisposable
+    public class LinkedoutEntities : IdentityDbContext<User, Role, string, UserClaim, UserRole, UserLogin, UserRoleClaim, UserToken>, IDisposable
     {
         public LinkedoutEntities(DbContextOptions<LinkedoutEntities> options)
         : base(options)
         {
         }
-        public DbSet<User> Users { get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(e =>
-            {
-                e.ToTable("User");
-                e.HasKey(_ => _.Id);
-            });
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaim");
+            modelBuilder.Entity<UserRole>().ToTable("UserRole");
+            modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<UserRoleClaim>().ToTable("UserRoleClaim");
+            modelBuilder.Entity<UserToken>().ToTable("UserToken");
         }
     }
 }
