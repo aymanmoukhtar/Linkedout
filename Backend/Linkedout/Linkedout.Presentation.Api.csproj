@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Linkedout.Application\Linkedout.Application.csproj" />
+    <ProjectReference Include="..\Linkedout.Crosscutting\Linkedout.Crosscutting.csproj" />
     <ProjectReference Include="..\Linkedout.Domain\Linkedout.Domain.csproj" />
     <ProjectReference Include="..\Linkedout.Infrastructure\Linkedout.Infrastructure.csproj" />
   </ItemGroup>

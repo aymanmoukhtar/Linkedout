@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Linkedout.Crosscutting\Linkedout.Crosscutting.csproj" />
+    <ProjectReference Include="..\Linkedout.Domain\Linkedout.Domain.csproj" />
+    <ProjectReference Include="..\Linkedout.Infrastructure\Linkedout.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="User\Queries\" />
+    <Folder Include="User\Commands\" />
+  </ItemGroup>
+
+</Project>

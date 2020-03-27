@@ -1,7 +1,9 @@
-﻿using Linkedout.Domain.Interfaces.Repository;
+﻿using Linkedout.Crosscutting.Constants;
+using Linkedout.Domain.Interfaces.Repository;
 using Linkedout.Domain.Users.Entities;
 using Linkedout.Infrastructure.Repository;
 using Linkedout.Infrastructure.Repository.SqlServerContext;
+using Linkedout.Infrastructure.Services.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,33 +25,32 @@ namespace Linkedout.Infrastructure
                     b => b.MigrationsAssembly(typeof(LinkedoutEntities).Assembly.FullName))
                 );
 
-            //services.AddIdentity<User, Role>()
-            //    .AddEntityFrameworkStores<LinkedoutEntities>();
-
             services.AddDefaultIdentity<User>()
                 .AddRoles<Role>()
                 .AddEntityFrameworkStores<LinkedoutEntities>();
 
-            var key = Encoding.UTF8.GetBytes("123456789101112131415");
+            var key = Encoding.UTF8.GetBytes(configuration[$"{AppConstant.APP_SETTINGS_KEY}:{AppConstant.JWT_SECRET_SETTINGS_KEY}"].ToString());
 
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = false;
-                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            services
+                .AddAuthentication(_ =>
                 {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-                };
-            });
+                    _.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    _.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    _.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(_ =>
+                {
+                    _.RequireHttpsMetadata = false;
+                    _.SaveToken = false;
+                    _.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -58,13 +59,13 @@ namespace Linkedout.Infrastructure
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 4;
-            }
-            );
+            });
 
             services.AddScoped<LinkedoutEntities>();
             services.AddScoped(typeof(IRepository<>), typeof(SqlServerRepository<>));
             services.AddScoped(typeof(IReadonlyRepository<>), typeof(SqlServerReadonlyRepository<>));
             services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
+            services.AddScoped<IIdentityService, IdentityService>();
 
             return services;
         }
