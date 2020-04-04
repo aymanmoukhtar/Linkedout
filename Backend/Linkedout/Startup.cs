@@ -7,6 +7,7 @@ using Linkedout.Crosscutting.Constants;
 using Linkedout.Infrastructure;
 using Linkedout.Presentation.Api.GraphQL;
 using Linkedout.Presentation.Api.GraphQL.Mutations;
+using Linkedout.Presentation.Api.GraphQL.Nodes;
 using Linkedout.Presentation.Api.GraphQL.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,14 +41,13 @@ namespace Linkedout
             services.AddGraphQL(sp =>
                 SchemaBuilder.New()
                 .AddServices(sp)
+                .EnableRelaySupport()
                 .AddAuthorizeDirectiveType()
-
                 .AddQueryType<Query>()
-                .AddType<UserQueries>()
-
+                .AddType<UserQueriesType>()
+                .AddType<UserViewModelType>()
                 .AddMutationType<Mutation>()
                 .AddType<UserMutations>()
-
                 .Create()
                 );
         }
