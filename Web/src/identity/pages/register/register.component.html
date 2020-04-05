@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="mat-h1">Linkedout</div>
+    <div class="mat-h4">
+        Make the most of your professional life
+    </div>
+    <form class="form-container">
+        <mat-form-field class="field">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password">
+        </mat-form-field>
+        <button class="field" mat-raised-button color="primary">Join</button>
+        <span>
+            Already a member? <a color="primary" mat-button [routerLink]="'/identity/login'">Login</a>
+        </span>
+    </form>
+</div>
