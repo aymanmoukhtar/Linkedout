@@ -1,0 +1,32 @@
+.active {
+  color: white;
+  opacity: 1;
+}
+
+.nav-bar {
+  border: none;
+  margin-top: 4px;
+}
+
+.router-link {
+  padding: 0px 7px;
+  opacity: 0.5;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 330px;
+}
+
+.link-icon-container {
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.link-icon-container > div {
+  font-size: smaller;
+}
+
+.router-link-active {
+  opacity: 1;
+}

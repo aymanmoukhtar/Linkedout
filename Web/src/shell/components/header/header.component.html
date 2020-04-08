@@ -1,0 +1,14 @@
+<mat-toolbar *ngIf="isVisible" color="primary" class="topbar telative" style="display: flex; justify-content: space-between;">
+    <div class="navbar-header">
+        <h1>Linkedout</h1>
+    </div>
+    <div class="nav-container">
+        <nav mat-tab-nav-bar class="nav-bar">
+            <a mat-button *ngFor="let route of routes" [routerLink]="route.path" class="router-link"
+                [class.router-link-active]="route.isActive">
+                <mat-icon>{{ route.icon }}</mat-icon>
+            </a>
+        </nav>
+        <img src="assets/images/users/1.jpg" alt="user" class="profile-pic">
+    </div>
+</mat-toolbar>
