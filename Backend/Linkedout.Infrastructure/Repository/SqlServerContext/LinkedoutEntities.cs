@@ -23,6 +23,8 @@ namespace Linkedout.Infrastructure.Repository.SqlServerContext
             modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
             modelBuilder.Entity<UserRoleClaim>().ToTable("UserRoleClaim");
             modelBuilder.Entity<UserToken>().ToTable("UserToken");
+            modelBuilder.Entity<Post>().ToTable("Post");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
         }
     }
 }
