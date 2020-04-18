@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Linkedout.Application.User.Queries.GetAllUsersQuery
 {
-    using Linkedout.Domain.Users.Entities;
+    using Linkedout.Domain.Entities.Users;
 
     #region Query
     public class GetUserByIdQuery : IRequest<UserViewModel>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Linkedout.Application.User.Queries.GetAllUsersQuery
 {
-    using Linkedout.Domain.Users.Entities;
+    using Linkedout.Domain.Entities.Users;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;

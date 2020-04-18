@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Linkedout.Domain.Users.Entities
+namespace Linkedout.Domain.Entities.Users
 {
     public class Role : IdentityRole<string>
     {

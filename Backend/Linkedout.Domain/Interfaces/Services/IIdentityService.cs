@@ -1,4 +1,4 @@
-﻿using Linkedout.Domain.Users.Entities;
+﻿using Linkedout.Domain.Entities.Users;
 using Linkedout.Domain.ViewModels.User;
 using System.Threading.Tasks;
 
