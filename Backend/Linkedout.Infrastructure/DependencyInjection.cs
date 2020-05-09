@@ -1,7 +1,7 @@
 ﻿using Linkedout.Crosscutting.Constants;
+using Linkedout.Domain.Entities.Users;
 using Linkedout.Domain.Interfaces.Repository;
 using Linkedout.Domain.Interfaces.Services.Identity;
-using Linkedout.Domain.Users.Entities;
 using Linkedout.Infrastructure.Repository;
 using Linkedout.Infrastructure.Repository.SqlServerContext;
 using Linkedout.Infrastructure.Services.Identity;
@@ -67,7 +67,8 @@ namespace Linkedout.Infrastructure
             services.AddScoped(typeof(IReadonlyRepository<>), typeof(SqlServerReadonlyRepository<>));
             services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
             services.AddScoped<IIdentityService, IdentityService>();
-
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
             return services;
         }
     }

@@ -4,18 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Linkedout.Domain.Entities
+namespace Linkedout.Domain.Entities.Posts
 {
-    public class Post : IEntity
+    public class Comment : IEntity
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int Likes { get; set; }
-        public int CommentsCount { get; set; }
+        public int Reactions { get; set; }
         public string CreatorId { get; set; }
+        public int PostId { get; set; }
+        public DateTime CreatedAt { get; set; }
         public virtual User Creator { get; set; }
-        public virtual List<User> Likers { get; set; }
-        public virtual List<Comment> Comments { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

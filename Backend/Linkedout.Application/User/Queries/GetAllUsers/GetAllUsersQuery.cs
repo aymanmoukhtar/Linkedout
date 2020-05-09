@@ -1,4 +1,4 @@
-﻿using Linkedout.Domain.Interfaces.Repository;
+﻿
 using MediatR;
 using System;
 using System.Threading;
@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Linkedout.Application.User.Queries.GetAllUsersQuery
 {
     using Linkedout.Domain.Entities.Users;
+    using Linkedout.Domain.Interfaces.Repository;
+    using Linkedout.Domain.ViewModels.User;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;

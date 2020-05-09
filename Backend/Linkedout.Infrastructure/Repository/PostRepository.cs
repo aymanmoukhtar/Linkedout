@@ -1,4 +1,5 @@
 ﻿using Linkedout.Domain.Entities;
+using Linkedout.Domain.Entities.Posts;
 using Linkedout.Domain.Interfaces.Repository;
 using Linkedout.Infrastructure.Repository.SqlServerContext;
 using System;

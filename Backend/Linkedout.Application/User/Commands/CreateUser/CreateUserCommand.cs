@@ -3,7 +3,7 @@
 namespace Linkedout.Application.User.Commands.CreateUser
 {
     using Linkedout.Domain.Interfaces.Services.Identity;
-    using Linkedout.Domain.Users.Entities;
+    using Linkedout.Domain.Entities.Users;
     using Linkedout.Domain.ViewModels.User;
     using System;
     using System.Threading;

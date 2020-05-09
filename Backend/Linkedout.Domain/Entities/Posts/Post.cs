@@ -2,19 +2,19 @@
 using Linkedout.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace Linkedout.Domain.Entities
+namespace Linkedout.Domain.Entities.Posts
 {
-    public class Comment : IEntity
+    public class Post : IEntity
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public int Likes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public int ReactionsCount { get; set; }
         public string CreatorId { get; set; }
-        public int PostId { get; set; }
         public virtual User Creator { get; set; }
-        public virtual Post Post { get; set; }
-        public virtual List<User> Likers { get; set; }
+        public virtual IQueryable<Comment> Comments { get; set; }
     }
 }

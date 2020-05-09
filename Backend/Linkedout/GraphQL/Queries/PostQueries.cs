@@ -1,0 +1,24 @@
+﻿using Linkedout.Application.Post.Queries.GetPostsByUserId;
+using Linkedout.Domain.ViewModels.Post;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Linkedout.Presentation.Api.GraphQL.Queries
+{
+    public class PostQueries
+    {
+        private readonly Lazy<IMediator> _mediator;
+
+        public PostQueries(
+            Lazy<IMediator> mediator
+            )
+        {
+            _mediator = mediator;
+        }
+
+        public async Task<List<PostViewModel>> GetPostsByUserId(string userId) => await _mediator.Value.Send(new GetPostsByUserIdQuery { UserId = userId });
+    }
+}

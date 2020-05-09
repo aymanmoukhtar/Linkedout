@@ -1,6 +1,6 @@
 ﻿using HotChocolate.AspNetCore.Authorization;
-using Linkedout.Application.User;
 using Linkedout.Application.User.Queries.GetAllUsersQuery;
+using Linkedout.Domain.ViewModels.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Linkedout.Presentation.Api.GraphQL.Queries
             _mediator = mediator;
         }
 
-        [Authorize]
+
         public async Task<List<UserViewModel>> GetAll() => await _mediator.Value.Send(new GetAllUsersQuery());
 
         [Authorize]
