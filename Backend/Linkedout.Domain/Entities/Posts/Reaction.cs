@@ -1,8 +1,5 @@
 ﻿using Linkedout.Domain.Entities.Users;
 using Linkedout.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Linkedout.Domain.Entities.Posts
 {

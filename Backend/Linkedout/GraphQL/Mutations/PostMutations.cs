@@ -2,10 +2,7 @@
 using Linkedout.Domain.Entities.Posts;
 using Linkedout.Domain.ViewModels.Post;
 using MediatR;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Linkedout.Presentation.Api.GraphQL.Mutations

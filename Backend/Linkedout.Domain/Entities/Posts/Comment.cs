@@ -1,8 +1,6 @@
 ﻿using Linkedout.Domain.Entities.Users;
 using Linkedout.Domain.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Linkedout.Domain.Entities.Posts
 {

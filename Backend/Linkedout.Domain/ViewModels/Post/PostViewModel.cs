@@ -1,6 +1,4 @@
-﻿
-
-using Linkedout.Domain.ViewModels.User;
+﻿using Linkedout.Domain.ViewModels.User;
 using System;
 using System.Collections.Generic;
 

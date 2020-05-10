@@ -1,8 +1,4 @@
-﻿using Linkedout.Domain.Entities;
-using Linkedout.Domain.Entities.Posts;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Linkedout.Domain.Entities.Posts;
 
 namespace Linkedout.Domain.Interfaces.Repository
 {

@@ -1,8 +1,5 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Linkedout.Application.Post.Commands.CreatePost
 {

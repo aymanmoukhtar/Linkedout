@@ -1,7 +1,5 @@
 ﻿using Linkedout.Domain.ViewModels.User;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Linkedout.Domain.ViewModels.Post
 {
