@@ -67,8 +67,7 @@ namespace Linkedout.Infrastructure
             services.AddScoped(typeof(IReadonlyRepository<>), typeof(SqlServerReadonlyRepository<>));
             services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
             services.AddScoped<IIdentityService, IdentityService>();
-            services.AddScoped<IPostRepository, PostRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
+
             return services;
         }
     }
