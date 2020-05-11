@@ -1,5 +1,5 @@
-﻿using Linkedout.Domain.Entities.Posts;
-using Linkedout.Domain.Entities.Users;
+﻿using Linkedout.Domain.Users.Posts.Entities;
+using Linkedout.Domain.Users.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

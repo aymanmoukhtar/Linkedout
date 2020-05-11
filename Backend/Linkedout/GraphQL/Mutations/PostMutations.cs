@@ -1,6 +1,6 @@
-﻿using Linkedout.Application.Post.Commands.CreatePost;
-using Linkedout.Domain.Entities.Posts;
-using Linkedout.Domain.ViewModels.Post;
+﻿using Linkedout.Application.User.Commands.Post;
+using Linkedout.Application.User.ViewModels;
+using Linkedout.Domain.Users.Posts.Entities;
 using MediatR;
 using System;
 using System.Threading.Tasks;

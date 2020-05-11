@@ -1,5 +1,5 @@
-﻿using Linkedout.Application.Post.Queries.GetPostsByUserId;
-using Linkedout.Domain.ViewModels.Post;
+﻿using Linkedout.Application.User.Queries.Post;
+using Linkedout.Application.User.ViewModels;
 using MediatR;
 using System;
 using System.Collections.Generic;

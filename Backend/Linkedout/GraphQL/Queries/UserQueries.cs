@@ -1,6 +1,6 @@
 ﻿using HotChocolate.AspNetCore.Authorization;
-using Linkedout.Application.User.Queries.GetAllUsersQuery;
-using Linkedout.Domain.ViewModels.User;
+using Linkedout.Application.User.Queries;
+using Linkedout.Application.User.ViewModels;
 using MediatR;
 using System;
 using System.Collections.Generic;

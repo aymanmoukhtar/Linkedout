@@ -1,7 +1,6 @@
 ﻿using Linkedout.Crosscutting;
-using Linkedout.Domain.Entities.Users;
+using Linkedout.Domain.Users.Entities;
 using Linkedout.Domain.Interfaces.Services.Identity;
-using Linkedout.Domain.ViewModels.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -27,9 +26,9 @@ namespace Linkedout.Infrastructure.Services.Identity
             _appSettings = appSettings;
         }
 
-        public async Task<UserTokenViewModel> LoginAsync(UserLoginInput input)
+        public async Task<string> LoginAsync(string userName, string password)
         {
-            var user = await _userManager.Value.FindByNameAsync(input.Username);
+            var user = await _userManager.Value.FindByNameAsync(userName);
 
             // ToDo: Add proper error propagation later, to return a proper error to the user, with the proper status code
             if (user == null)
@@ -37,7 +36,7 @@ namespace Linkedout.Infrastructure.Services.Identity
                 throw new InvalidOperationException("User not found");
             }
 
-            var isAuthenticated = await _userManager.Value.CheckPasswordAsync(user, input.Password);
+            var isAuthenticated = await _userManager.Value.CheckPasswordAsync(user, password);
 
             if (!isAuthenticated)
             {
@@ -64,24 +63,14 @@ namespace Linkedout.Infrastructure.Services.Identity
             var securityToken = tokenHandler.CreateToken(tokenDescriptor);
             var token = tokenHandler.WriteToken(securityToken);
 
-            return new UserTokenViewModel
-            {
-                Username = user.UserName,
-                Token = token
-            };
+            return token;
         }
 
-        public async Task<User> CreateAsync(CreateUserInput input)
+        public async Task<User> CreateAsync(User user, string password)
         {
-            var user = new User
-            {
-                Id = Guid.NewGuid().ToString(),
-                UserName = input.Username,
-                FirstName = input.FirstName,
-                Email = input.Email
-            };
-
-            var result = await _userManager.Value.CreateAsync(user, input.Password);
+            user.Id = Guid.NewGuid().ToString();
+            
+            var result = await _userManager.Value.CreateAsync(user, password);
 
             if (!result.Succeeded)
             {

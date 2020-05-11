@@ -1,6 +1,5 @@
-﻿using Linkedout.Application.User.Commands.CreateUser;
-using Linkedout.Application.User.Commands.Login;
-using Linkedout.Domain.Entities.Users;
+﻿using Linkedout.Application.User.Commands;
+using Linkedout.Domain.Users.Entities;
 using MediatR;
 using System;
 using System.Threading.Tasks;

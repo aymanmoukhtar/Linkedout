@@ -1,11 +1,7 @@
-﻿using Linkedout.Domain.Entities;
-using Linkedout.Domain.Entities.Posts;
-using Linkedout.Domain.Interfaces.Repository;
+﻿using Linkedout.Domain.Interfaces.Repository;
+using Linkedout.Domain.Users.Posts.Entities;
 using Linkedout.Infrastructure.Repository.SqlServerContext;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
+
 
 namespace Linkedout.Infrastructure.Repository
 {

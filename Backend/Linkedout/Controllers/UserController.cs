@@ -1,8 +1,7 @@
-﻿using Linkedout.Application.User.Commands.CreateUser;
-using Linkedout.Application.User.Commands.Login;
-using Linkedout.Application.User.Queries.GetAllUsersQuery;
-using Linkedout.Domain.Entities.Users;
-using Linkedout.Domain.ViewModels.User;
+﻿using Linkedout.Application.User.Commands;
+using Linkedout.Application.User.Queries;
+using Linkedout.Application.User.ViewModels;
+using Linkedout.Domain.Users.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
