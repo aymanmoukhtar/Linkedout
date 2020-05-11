@@ -1,6 +1,6 @@
 ﻿namespace Linkedout.Domain.Enums
 {
-    public enum ReactionTypeEnum
+    public enum ReactionType
     {
         Like = 1,
         Love = 2,

@@ -1,6 +1,6 @@
 ﻿namespace Linkedout.Domain.Enums
 {
-    public enum ReactOnTypeEnum
+    public enum ReactOnType
     {
         Post = 1,
         Comment = 2
