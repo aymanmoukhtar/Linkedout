@@ -1,4 +1,5 @@
-﻿using Linkedout.Application.User.Commands.Post;
+﻿using HotChocolate.AspNetCore.Authorization;
+using Linkedout.Application.User.Commands.Post;
 using Linkedout.Application.User.ViewModels;
 using Linkedout.Domain.Users.Posts.Entities;
 using MediatR;
@@ -17,7 +18,7 @@ namespace Linkedout.Presentation.Api.GraphQL.Mutations
         {
             _mediator = mediator;
         }
-
+        [Authorize]
         public async Task<Post> CreatePost(CreatePostViewModel post) => await _mediator.Value.Send(new CreatePostCommand { Post = post });
     }
 }
