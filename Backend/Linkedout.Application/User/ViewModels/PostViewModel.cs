@@ -7,7 +7,7 @@ namespace Linkedout.Application.User.ViewModels
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public int ReactionsCount { get; set; }
+        public int Reactions { get; set; }
         public UserViewModel Creator { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<CommentViewModel> Comments { get; set; }

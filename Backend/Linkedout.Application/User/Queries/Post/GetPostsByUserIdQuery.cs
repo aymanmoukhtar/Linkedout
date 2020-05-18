@@ -24,15 +24,15 @@ namespace Linkedout.Application.User.Queries.Post
         {
             _postReadonlyRepository = postReadonlyRepository;
         }
-        public Task<List<PostViewModel>> Handle(GetPostsByUserIdQuery request, CancellationToken cancellationToken)
+        public async Task<List<PostViewModel>> Handle(GetPostsByUserIdQuery request, CancellationToken cancellationToken)
         {
             var posts = _postReadonlyRepository.Value.GetAll().Where(_ => _.CreatorId == request.UserId);
-            var result = posts.Select(_ => new PostViewModel
+            var result = await posts.Select(_ => new PostViewModel
             {
                 Id = _.Id,
                 CreatedAt = _.CreatedAt,
                 Content = _.Content,
-                ReactionsCount = _.ReactionsCount,
+                Reactions = _.Reactions.Count(),
                 Creator = new UserViewModel
                 {
                     Id = _.Creator.Id,

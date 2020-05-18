@@ -14,5 +14,6 @@ namespace Linkedout.Domain.Users.Posts.Entities
         public string CreatorId { get; set; }
         public virtual User Creator { get; set; }
         public virtual IQueryable<Comment> Comments { get; set; }
+        public virtual IQueryable<PostReaction> Reactions { get; set; }
     }
 }
