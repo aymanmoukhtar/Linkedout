@@ -7,7 +7,7 @@ using Linkedout.Application.User.ViewModels;
 
 namespace Linkedout.Application.User.Commands.Post
 {
-    using Linkedout.Domain.Users.Posts.Entities;
+    using Linkedout.Domain.Users.Entities.Posts;
 
     public class CreatePostCommand : IRequest<Post>
     {

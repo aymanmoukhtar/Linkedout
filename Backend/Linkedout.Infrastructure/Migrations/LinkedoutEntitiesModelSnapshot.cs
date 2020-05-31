@@ -19,12 +19,11 @@ namespace Linkedout.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Comment", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
@@ -35,11 +34,8 @@ namespace Linkedout.Infrastructure.Migrations
                     b.Property<string>("CreatorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Reactions")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -50,12 +46,38 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Post", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.CommentReaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CommentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReactionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ReactorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("ReactorId");
+
+                    b.ToTable("CommentReaction");
+                });
+
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.Post", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
@@ -66,9 +88,6 @@ namespace Linkedout.Infrastructure.Migrations
                     b.Property<string>("CreatorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ReactionsCount")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorId");
@@ -76,33 +95,45 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("Post");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Reaction", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.PostReaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ReactOnId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ReactOnType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReactionType")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ReactionId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReactorId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PostId");
+
                     b.HasIndex("ReactorId");
+
+                    b.ToTable("PostReaction");
+                });
+
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.Reaction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Reaction");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.Role", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -129,7 +160,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("Role");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.User", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -197,7 +228,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserClaim", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -221,7 +252,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("UserClaim");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserLogin", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserLogin", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(128)")
@@ -245,7 +276,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("UserLogin");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserRole", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserRole", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -260,7 +291,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("UserRole");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserRoleClaim", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserRoleClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -284,7 +315,7 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("UserRoleClaim");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserToken", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserToken", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -305,78 +336,95 @@ namespace Linkedout.Infrastructure.Migrations
                     b.ToTable("UserToken");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Comment", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.Comment", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", "Creator")
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", "Creator")
                         .WithMany()
                         .HasForeignKey("CreatorId");
 
-                    b.HasOne("Linkedout.Domain.Entities.Posts.Post", "Post")
+                    b.HasOne("Linkedout.Domain.Users.Entities.Posts.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Post", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.CommentReaction", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", "Creator")
-                        .WithMany()
-                        .HasForeignKey("CreatorId");
-                });
+                    b.HasOne("Linkedout.Domain.Users.Entities.Posts.Comment", null)
+                        .WithMany("Reactions")
+                        .HasForeignKey("CommentId");
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Posts.Reaction", b =>
-                {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", "Reactor")
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", "Reactor")
                         .WithMany()
                         .HasForeignKey("ReactorId");
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserClaim", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.Post", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId");
+                });
+
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.Posts.PostReaction", b =>
+                {
+                    b.HasOne("Linkedout.Domain.Users.Entities.Posts.Post", null)
+                        .WithMany("Reactions")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", "Reactor")
+                        .WithMany()
+                        .HasForeignKey("ReactorId");
+                });
+
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserClaim", b =>
+                {
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserLogin", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserLogin", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserRole", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserRole", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.Role", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserRoleClaim", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserRoleClaim", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.Role", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Linkedout.Domain.Entities.Users.UserToken", b =>
+            modelBuilder.Entity("Linkedout.Domain.Users.Entities.UserToken", b =>
                 {
-                    b.HasOne("Linkedout.Domain.Entities.Users.User", null)
+                    b.HasOne("Linkedout.Domain.Users.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

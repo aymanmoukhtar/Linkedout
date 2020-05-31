@@ -1,7 +1,7 @@
 ﻿using HotChocolate.AspNetCore.Authorization;
 using Linkedout.Application.User.Commands.Post;
 using Linkedout.Application.User.ViewModels;
-using Linkedout.Domain.Users.Posts.Entities;
+using Linkedout.Domain.Users.Entities.Posts;
 using MediatR;
 using System;
 using System.Threading.Tasks;

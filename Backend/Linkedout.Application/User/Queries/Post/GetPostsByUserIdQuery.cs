@@ -10,7 +10,7 @@ using Linkedout.Domain.Interfaces.Repository;
 
 namespace Linkedout.Application.User.Queries.Post
 {
-    using Linkedout.Domain.Users.Posts.Entities;
+    using Linkedout.Domain.Users.Entities.Posts;
 
     public class GetPostsByUserIdQuery : IRequest<List<PostViewModel>>
     {

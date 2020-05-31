@@ -5,23 +5,23 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedout.Presentation.Api", "Linkedout\Linkedout.Presentation.Api.csproj", "{9F661B6F-76E4-4EEE-8173-FF5BEB43D90D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A6BBD68A-608A-46C2-B8FE-60B382FC250F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- Domain", "4- Domain", "{A6BBD68A-608A-46C2-B8FE-60B382FC250F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{820BF29C-11AC-4370-AAA8-0A8FDCEF11EA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2- Application", "2- Application", "{820BF29C-11AC-4370-AAA8-0A8FDCEF11EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{504E4079-08E7-4814-A266-8818B5CABEEC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- Infrastructure", "3- Infrastructure", "{504E4079-08E7-4814-A266-8818B5CABEEC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4144B560-5D87-4C9D-A247-56E4980D851C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Presentation", "1- Presentation", "{4144B560-5D87-4C9D-A247-56E4980D851C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedout.Domain", "Linkedout.Domain\Linkedout.Domain.csproj", "{BDC3DFE2-B30E-4BC5-9DC9-ADC4FDEDEBD2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedout.Infrastructure", "Linkedout.Infrastructure\Linkedout.Infrastructure.csproj", "{3641768C-8B29-4BBA-93D9-4111A8EFBA9F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crosscutting", "Crosscutting", "{EA589852-F4EB-44CA-9F55-AAD544D18BFA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5- Crosscutting", "5- Crosscutting", "{EA589852-F4EB-44CA-9F55-AAD544D18BFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linkedout.Crosscutting", "Linkedout.Crosscutting\Linkedout.Crosscutting.csproj", "{2E24D92B-3C57-4C0B-853E-05D3F31233C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedout.Crosscutting", "Linkedout.Crosscutting\Linkedout.Crosscutting.csproj", "{2E24D92B-3C57-4C0B-853E-05D3F31233C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linkedout.Application", "Linkedout.Application\Linkedout.Application.csproj", "{F86B3852-1BD3-4FDB-976D-D5496441E121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedout.Application", "Linkedout.Application\Linkedout.Application.csproj", "{F86B3852-1BD3-4FDB-976D-D5496441E121}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
