@@ -1,13 +1,12 @@
 ﻿using MediatR;
+using Linkedout.Domain.Interfaces.Services.Identity;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Linkedout.Application.User.Commands.CreateUser
+namespace Linkedout.Application.User.Commands
 {
-    using Linkedout.Domain.Interfaces.Services.Identity;
     using Linkedout.Domain.Users.Entities;
-    using Linkedout.Domain.ViewModels.User;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class CreateUserCommand : IRequest<User>
     {
@@ -30,13 +29,12 @@ namespace Linkedout.Application.User.Commands.CreateUser
 
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            return await _identityService.Value.CreateAsync(new CreateUserInput
+            return await _identityService.Value.CreateAsync(new User
             {
                 Email = request.Email,
                 FirstName = request.FirstName,
-                Password = request.Password,
-                Username = request.Username
-            });
+                UserName = request.Username
+            }, request.Password);
         }
     }
 }

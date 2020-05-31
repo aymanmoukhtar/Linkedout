@@ -1,11 +1,10 @@
 ﻿using Linkedout.Domain.Interfaces.Services.Identity;
-using Linkedout.Domain.ViewModels.User;
 using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Linkedout.Application.User.Commands.Login
+namespace Linkedout.Application.User.Commands
 {
     public class LoginCommandOutput
     {
@@ -32,17 +31,13 @@ namespace Linkedout.Application.User.Commands.Login
 
         public async Task<LoginCommandOutput> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var tokenModel = await _identityService.Value
-                .LoginAsync(new UserLoginInput
-                {
-                    Username = request.Username,
-                    Password = request.Password
-                });
+            var token = await _identityService.Value
+                .LoginAsync(request.Username, request.Password);
 
             return new LoginCommandOutput
             {
-                Username = tokenModel.Username,
-                Token = tokenModel.Token
+                Username = request.Username,
+                Token = token
             };
         }
     }

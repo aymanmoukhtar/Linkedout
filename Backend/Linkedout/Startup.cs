@@ -34,6 +34,8 @@ namespace Linkedout
             services.AddCrosscuttingDependencies(Configuration);
             services.AddScoped<UserQueries>();
             services.AddScoped<UserMutations>();
+            services.AddScoped<PostQueries>();
+            services.AddScoped<PostMutations>();
 
             services.AddControllers();
 
@@ -44,9 +46,11 @@ namespace Linkedout
 
                 .AddQueryType<Query>()
                 .AddType<UserQueries>()
+                .AddType<PostQueries>()
 
                 .AddMutationType<Mutation>()
                 .AddType<UserMutations>()
+                .AddType<PostMutations>()
 
                 .Create()
                 );

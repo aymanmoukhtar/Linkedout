@@ -1,5 +1,5 @@
 ﻿using HotChocolate.AspNetCore.Authorization;
-using Linkedout.Application.User.Queries;
+using Linkedout.Application.User.Queries.Post;
 using Linkedout.Application.User.ViewModels;
 using MediatR;
 using System;
@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace Linkedout.Presentation.Api.GraphQL.Queries
 {
-    public class UserQueries
+    public class PostQueries
     {
         private readonly Lazy<IMediator> _mediator;
 
-        public UserQueries(
+        public PostQueries(
             Lazy<IMediator> mediator
             )
         {
             _mediator = mediator;
         }
-
         [Authorize]
-        public async Task<List<UserViewModel>> GetAll() => await _mediator.Value.Send(new GetAllUsersQuery());
-
-        [Authorize]
-        public async Task<UserViewModel> GetById(string id) => await _mediator.Value.Send(new GetUserByIdQuery { Id = id });
+        public async Task<List<PostViewModel>> GetPostsByUserId(string userId) => await _mediator
+            .Value.Send(new GetPostsByUserIdQuery { UserId = userId });
     }
 }

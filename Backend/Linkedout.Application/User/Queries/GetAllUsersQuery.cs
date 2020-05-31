@@ -1,15 +1,17 @@
-﻿using Linkedout.Domain.Interfaces.Repository;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Linkedout.Domain.Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using Linkedout.Application.User.ViewModels;
 
-namespace Linkedout.Application.User.Queries.GetAllUsersQuery
+namespace Linkedout.Application.User.Queries
 {
     using Linkedout.Domain.Users.Entities;
-    using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
-    using System.Linq;
+
 
     #region Query
     public class GetAllUsersQuery : IRequest<List<UserViewModel>>

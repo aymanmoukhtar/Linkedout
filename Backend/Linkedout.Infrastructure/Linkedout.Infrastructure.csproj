@@ -11,6 +11,12 @@
     <Compile Remove="Migrations\20200327092830_AddUserIdentity.Designer.cs" />
     <Compile Remove="Migrations\20200327093032_AddUserIdentity.cs" />
     <Compile Remove="Migrations\20200327093032_AddUserIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20200531120006_AddAnnotationsForPostEntities.cs" />
+    <Compile Remove="Migrations\20200531120006_AddAnnotationsForPostEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200531120143_AddPostCommentEntities.cs" />
+    <Compile Remove="Migrations\20200531120143_AddPostCommentEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200531120244_AddPostCommentEntities.cs" />
+    <Compile Remove="Migrations\20200531120244_AddPostCommentEntities.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Linkedout.Application\Linkedout.Application.csproj" />
     <ProjectReference Include="..\Linkedout.Crosscutting\Linkedout.Crosscutting.csproj" />
     <ProjectReference Include="..\Linkedout.Domain\Linkedout.Domain.csproj" />
   </ItemGroup>

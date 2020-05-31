@@ -1,4 +1,5 @@
 ﻿using Linkedout.Domain.Users.Entities;
+using Linkedout.Domain.Users.Entities.Posts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -23,6 +24,11 @@ namespace Linkedout.Infrastructure.Repository.SqlServerContext
             modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
             modelBuilder.Entity<UserRoleClaim>().ToTable("UserRoleClaim");
             modelBuilder.Entity<UserToken>().ToTable("UserToken");
+            modelBuilder.Entity<Post>().ToTable("Post");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
+            modelBuilder.Entity<Reaction>().ToTable("Reaction");
+            modelBuilder.Entity<CommentReaction>().ToTable("CommentReaction");
+            modelBuilder.Entity<PostReaction>().ToTable("PostReaction");
         }
     }
 }

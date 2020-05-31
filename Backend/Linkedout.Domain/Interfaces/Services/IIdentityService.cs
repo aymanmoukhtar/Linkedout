@@ -1,12 +1,11 @@
 ﻿using Linkedout.Domain.Users.Entities;
-using Linkedout.Domain.ViewModels.User;
 using System.Threading.Tasks;
 
 namespace Linkedout.Domain.Interfaces.Services.Identity
 {
     public interface IIdentityService
     {
-        Task<UserTokenViewModel> LoginAsync(UserLoginInput input);
-        Task<User> CreateAsync(CreateUserInput input);
+        Task<string> LoginAsync(string userName, string password);
+        Task<User> CreateAsync(User user, string password);
     }
 }

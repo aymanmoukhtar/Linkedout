@@ -1,10 +1,11 @@
-﻿using Linkedout.Domain.Interfaces.Repository;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Linkedout.Domain.Interfaces.Repository;
+using Linkedout.Application.User.ViewModels;
 
-namespace Linkedout.Application.User.Queries.GetAllUsersQuery
+namespace Linkedout.Application.User.Queries
 {
     using Linkedout.Domain.Users.Entities;
 

@@ -1,5 +1,5 @@
-﻿using Linkedout.Application.User.Commands.CreateUser;
-using Linkedout.Application.User.Commands.Login;
+﻿using HotChocolate.AspNetCore.Authorization;
+using Linkedout.Application.User.Commands;
 using Linkedout.Domain.Users.Entities;
 using MediatR;
 using System;
@@ -17,12 +17,12 @@ namespace Linkedout.Presentation.Api.GraphQL.Mutations
         {
             _mediator = mediator;
         }
-
+        [Authorize]
         public async Task<User> Register(CreateUserCommand input)
         {
             return await _mediator.Value.Send(input);
         }
-
+        [Authorize]
         public async Task<LoginCommandOutput> Login(string username, string password)
         {
             return await _mediator.Value.Send(new LoginCommand { Username = username, Password = password });
