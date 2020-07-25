@@ -19,10 +19,10 @@ namespace Linkedout.Presentation.Api.GraphQL.Queries
             _mediator = mediator;
         }
 
-        [Authorize]
+        // [Authorize]
         public async Task<List<UserViewModel>> GetAll() => await _mediator.Value.Send(new GetAllUsersQuery());
 
-        [Authorize]
+        // [Authorize]
         public async Task<UserViewModel> GetById(string id) => await _mediator.Value.Send(new GetUserByIdQuery { Id = id });
     }
 }

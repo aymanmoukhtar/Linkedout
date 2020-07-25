@@ -18,7 +18,7 @@ namespace Linkedout.Presentation.Api.GraphQL.Mutations
         {
             _mediator = mediator;
         }
-        [Authorize]
+        //[Authorize]
         public async Task<Post> CreatePost(CreatePostViewModel post) => await _mediator.Value.Send(new CreatePostCommand { Post = post });
     }
 }

@@ -13,7 +13,9 @@ namespace Linkedout.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    ConnectorId = table.Column<string>(nullable: true)
+                    ConnectorId = table.Column<string>(nullable: true),
+                    IsRemoved = table.Column<bool>(nullable: false),
+                    ConnectionDateTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

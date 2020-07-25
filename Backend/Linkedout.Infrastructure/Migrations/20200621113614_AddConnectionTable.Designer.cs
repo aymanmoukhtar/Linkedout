@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Linkedout.Infrastructure.Migrations
 {
     [DbContext(typeof(LinkedoutEntities))]
-    [Migration("20200621105938_AddIsRemovedToConnectionTable")]
-    partial class AddIsRemovedToConnectionTable
+    [Migration("20200621113614_AddConnectionTable")]
+    partial class AddConnectionTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace Linkedout.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ConnectionDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ConnectorId")
                         .HasColumnType("nvarchar(450)");

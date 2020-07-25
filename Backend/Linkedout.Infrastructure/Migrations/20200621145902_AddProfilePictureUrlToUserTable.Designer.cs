@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Linkedout.Infrastructure.Migrations
 {
     [DbContext(typeof(LinkedoutEntities))]
-    [Migration("20200621102940_AddConnectionTable")]
-    partial class AddConnectionTable
+    [Migration("20200621145902_AddProfilePictureUrlToUserTable")]
+    partial class AddProfilePictureUrlToUserTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,9 @@ namespace Linkedout.Infrastructure.Migrations
 
                     b.Property<string>("ConnectorId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsRemoved")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -228,7 +231,13 @@ namespace Linkedout.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SmallProfilePictureUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")

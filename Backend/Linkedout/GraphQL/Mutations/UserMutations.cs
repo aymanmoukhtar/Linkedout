@@ -17,12 +17,12 @@ namespace Linkedout.Presentation.Api.GraphQL.Mutations
         {
             _mediator = mediator;
         }
-        [Authorize]
+        //[Authorize]
         public async Task<User> Register(CreateUserCommand input)
         {
             return await _mediator.Value.Send(input);
         }
-        [Authorize]
+        //[Authorize]
         public async Task<LoginCommandOutput> Login(string username, string password)
         {
             return await _mediator.Value.Send(new LoginCommand { Username = username, Password = password });

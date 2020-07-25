@@ -6,13 +6,18 @@ namespace Linkedout.Presentation.Api.GraphQL
     {
         private readonly UserMutations _userMutations;
         private readonly PostMutations _postMutations;
-
-        public Mutation(UserMutations userMutations, PostMutations postMutations)
+        private readonly ConnectionMutations _connectionMutations;
+        public Mutation(
+            UserMutations userMutations,
+            PostMutations postMutations,
+            ConnectionMutations connectionMutations)
         {
             _userMutations = userMutations;
             _postMutations = postMutations;
+            _connectionMutations = connectionMutations;
         }
         public UserMutations User() => _userMutations;
         public PostMutations Post() => _postMutations;
+        public ConnectionMutations Connection() => _connectionMutations;
     }
 }
