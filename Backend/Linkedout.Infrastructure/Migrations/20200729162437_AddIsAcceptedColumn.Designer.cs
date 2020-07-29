@@ -4,14 +4,16 @@ using Linkedout.Infrastructure.Repository.SqlServerContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Linkedout.Infrastructure.Migrations
 {
     [DbContext(typeof(LinkedoutEntities))]
-    partial class LinkedoutEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20200729162437_AddIsAcceptedColumn")]
+    partial class AddIsAcceptedColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
