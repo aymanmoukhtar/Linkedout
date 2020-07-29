@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
 
+import { LoginMutation } from './mutations/login.mutation';
+import { IdentityService } from './services/identity.service';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -12,7 +14,12 @@ import { RegisterComponent } from './pages/register/register.component';
   ],
   imports: [
     IdentityRoutingModule,
-    SharedModule
+    SharedModule,
+
+  ],
+  providers: [
+    LoginMutation,
+    IdentityService
   ]
 })
-export class IdentityModule  { }
+export class IdentityModule { }
