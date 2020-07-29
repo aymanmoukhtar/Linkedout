@@ -6,12 +6,18 @@ namespace Linkedout.Presentation.Api.GraphQL
     {
         private readonly UserQueries _userQueries;
         private readonly PostQueries _postQueries;
-        public Query(UserQueries userQueries, PostQueries postQueries)
+        private readonly ConnectionQueries _connectionQueries;
+        public Query(
+            UserQueries userQueries,
+            PostQueries postQueries,
+            ConnectionQueries connectionQueries)
         {
             _userQueries = userQueries;
             _postQueries = postQueries;
+            _connectionQueries = connectionQueries;
         }
         public UserQueries User() => _userQueries;
         public PostQueries Post() => _postQueries;
+        public ConnectionQueries Connection() => _connectionQueries;
     }
 }

@@ -36,6 +36,8 @@ namespace Linkedout
             services.AddScoped<UserMutations>();
             services.AddScoped<PostQueries>();
             services.AddScoped<PostMutations>();
+            services.AddScoped<ConnectionMutations>();
+            services.AddScoped<ConnectionQueries>();
 
             services.AddControllers();
 
@@ -47,10 +49,12 @@ namespace Linkedout
                 .AddQueryType<Query>()
                 .AddType<UserQueries>()
                 .AddType<PostQueries>()
+                .AddType<ConnectionQueries>()
 
                 .AddMutationType<Mutation>()
                 .AddType<UserMutations>()
                 .AddType<PostMutations>()
+                .AddType<ConnectionMutations>()
 
                 .Create()
                 );
