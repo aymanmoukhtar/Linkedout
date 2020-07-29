@@ -1,4 +1,5 @@
-﻿using Linkedout.Application.User.Commands.Connections;
+﻿using HotChocolate.AspNetCore.Authorization;
+using Linkedout.Application.User.Commands.Connections;
 using Linkedout.Domain.Users.Entities.Connections;
 using MediatR;
 using System;
@@ -16,9 +17,12 @@ namespace Linkedout.Presentation.Api.GraphQL.Mutations
         {
             _mediator = mediator;
         }
-
-        public async Task<Connection> CreateConnection(CreateConnectionCommand request) => await _mediator.Value.Send(request);
+        [Authorize]
+        public async Task<Connection> RequestConnection(RequestConnectionCommand request) => await _mediator.Value.Send(request);
+        [Authorize]
         public async Task RemoveConnection(RemoveConnectionCommand request) => await _mediator.Value.Send(request);
+        [Authorize]
+        public async Task AcceptConnection(AcceptConnectionCommand request) => await _mediator.Value.Send(request);
 
     }
 }

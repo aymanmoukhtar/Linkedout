@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace Linkedout.Application.User.Commands.Connections
 {
-    public class CreateConnectionCommand : IRequest<Connection>
+    public class RequestConnectionCommand : IRequest<Connection>
     {
         public string UserId { get; set; }
         public string ConnectorId { get; set; }
     }
 
-    public class CreateConnectionCommandHandler : IRequestHandler<CreateConnectionCommand, Connection>
+    public class RequestConnectionCommandHandler : IRequestHandler<RequestConnectionCommand, Connection>
     {
         private readonly Lazy<IRepository<Connection>> _connectionRepository;
-        public CreateConnectionCommandHandler(Lazy<IRepository<Connection>> connectionRepository)
+        public RequestConnectionCommandHandler(Lazy<IRepository<Connection>> connectionRepository)
         {
             _connectionRepository = connectionRepository;
         }
-        public async Task<Connection> Handle(CreateConnectionCommand request, CancellationToken cancellationToken)
+        public async Task<Connection> Handle(RequestConnectionCommand request, CancellationToken cancellationToken)
         {
             var newConnection = new Connection
             {
