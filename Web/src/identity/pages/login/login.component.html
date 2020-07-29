@@ -3,21 +3,21 @@
     <div class="mat-h4">
         Don't miss your next opportunity. Sign in to stay updated on your professional world.
     </div>
-    <form class="form-container">
+    <form  class="form-container">
         <mat-form-field class="field">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email">
+            <input [(ngModel)]="loginInput.username" name="username" matInput placeholder="Email">
         </mat-form-field>
         <mat-form-field class="field">
             <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Password">
+            <input [(ngModel)]="loginInput.password" name="password" type="password" matInput placeholder="Password">
         </mat-form-field>
         <div style="align-self: flex-start;">
             <mat-checkbox class="example-margin">Remember Me.
             </mat-checkbox>
             <a color="primary" mat-button [routerLink]="'/feed'">Learn More</a>
         </div>
-        <button class="field" mat-raised-button color="primary">Login</button>
+        <button (click)="onLogin()" class="field" mat-raised-button color="primary">Login</button>
         <a color="primary" mat-button [routerLink]="'/'">Forgot Password?</a>
         <span>
             New to Linkedout? <a color="primary" mat-button [routerLink]="'/identity/register'">Join Now</a>
